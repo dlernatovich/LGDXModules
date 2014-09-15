@@ -16,6 +16,8 @@ public abstract class BaseActor extends Actor implements InputProcessor {
     protected int destX = -1;
     protected int destY = -1;
 
+    protected float elapsedTime = 0;
+
     @Override
     public abstract void draw(Batch batch, float parentAlpha);
 
@@ -105,5 +107,9 @@ public abstract class BaseActor extends Actor implements InputProcessor {
     @Override
     public boolean scrolled(int amount) {
         return false;
+    }
+
+    protected float getElapsedTime() {
+        return elapsedTime += Gdx.graphics.getDeltaTime();
     }
 }
