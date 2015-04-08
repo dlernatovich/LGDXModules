@@ -1,0 +1,75 @@
+
+backward1.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+0006
+  rotate: false
+  xy: 2, 2
+  size: 170, 191
+  orig: 170, 191
+  offset: 0, 0
+  index: -1
+0005
+  rotate: false
+  xy: 2, 195
+  size: 170, 191
+  orig: 170, 191
+  offset: 0, 0
+  index: -1
+0004
+  rotate: false
+  xy: 2, 388
+  size: 170, 191
+  orig: 170, 191
+  offset: 0, 0
+  index: -1
+0003
+  rotate: false
+  xy: 2, 581
+  size: 170, 191
+  orig: 170, 191
+  offset: 0, 0
+  index: -1
+0002
+  rotate: false
+  xy: 2, 774
+  size: 170, 191
+  orig: 170, 191
+  offset: 0, 0
+  index: -1
+0001
+  rotate: false
+  xy: 2, 967
+  size: 170, 190
+  orig: 170, 190
+  offset: 0, 0
+  index: -1
+0007
+  rotate: false
+  xy: 2, 1159
+  size: 170, 188
+  orig: 170, 188
+  offset: 0, 0
+  index: -1
+0008
+  rotate: false
+  xy: 2, 1349
+  size: 170, 183
+  orig: 170, 183
+  offset: 0, 0
+  index: -1
+0009
+  rotate: false
+  xy: 2, 1534
+  size: 170, 181
+  orig: 170, 181
+  offset: 0, 0
+  index: -1
+0010
+  rotate: false
+  xy: 2, 1717
+  size: 166, 178
+  orig: 166, 178
+  offset: 0, 0
+  index: -1
