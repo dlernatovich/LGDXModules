@@ -1,10 +1,11 @@
-package com.artlite.libgdxgame.enteties.actors;
+package com.artlite.libgdxgame.actors;
 
+import com.artlite.libgdxgame.actors.abs.BaseActor;
+import com.artlite.libgdxgame.helper.ResourceHelper;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class StaticActor extends BaseActor {
 
@@ -12,18 +13,17 @@ public class StaticActor extends BaseActor {
     private Sprite backgroundSprite;
     private Rectangle bounds;
 
+    // gamedata/back.png
     public StaticActor(String resourcePath) {
         super();
-        backgroundTexture = new Texture(resourcePath);
+        backgroundTexture = new Texture(
+                ResourceHelper.getInternalResource(resourcePath));
         backgroundSprite = new Sprite(backgroundTexture);
         backgroundSprite.setSize(backgroundTexture.getWidth(),
                 backgroundTexture.getHeight());
-
         backgroundSprite.flip(false, true);
-
         bounds = new Rectangle(positionX, positionY,
                 backgroundSprite.getWidth(), backgroundSprite.getHeight());
-
         positionX = 0;
         positionY = 0;
     }
@@ -49,11 +49,6 @@ public class StaticActor extends BaseActor {
         backgroundSprite.draw(batch);
     }
 
-    @Override
-    public Actor hit(float x, float y, boolean touchable) {
-        return null;
-    }
-
     private void updateBounds(int x, int y) {
         bounds.set(positionX, positionY, bounds.getWidth(), bounds.getHeight());
     }
@@ -76,9 +71,12 @@ public class StaticActor extends BaseActor {
 
     public int getActorHeigh() {
         return (int) Math.abs(bounds.getHeight());
+
     }
 
     public int getActorWidth() {
         return (int) Math.abs(bounds.getWidth());
+
     }
+
 }

@@ -1,83 +1,93 @@
 package com.artlite.libgdxgame.main;
 
+import com.artlite.libgdxgame.managers.StageManager;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.InputProcessor;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.artlite.libgdxgame.constants.BackgroundColor;
-import com.artlite.libgdxgame.enteties.ScreenConfiguration;
-import com.artlite.libgdxgame.helpers.CameraUtils;
-import com.artlite.libgdxgame.providers.ScreenConfigurationProvider;
+import com.badlogic.gdx.graphics.GL20;
 
 /**
  * Created by dlernatovich on 8/14/14.
  */
-public abstract class BaseApplicationAdapter extends ApplicationAdapter implements InputProcessor {
-    protected ScreenConfiguration screen;
-    protected OrthographicCamera camera;
-    protected BackgroundColor color;
+public abstract class BaseApplicationAdapter extends ApplicationAdapter {
 
+    protected StageManager stageManager;
 
+    /**
+     * Method which provide the action when game scene is created
+     */
     @Override
     public void create() {
-        screen = new ScreenConfigurationProvider().get();
-        camera = CameraUtils.getCameraFromScreen(screen);
-        color = BackgroundColor.WHITE;
+        super.create();
+        stageManager = getStageManager();
+        onCreate();
     }
 
-    protected void setInputProcessor(InputProcessor inputProcessor) {
-        Gdx.input.setInputProcessor(inputProcessor);
+    /**
+     * Method which provide the action when application is
+     * working on rendering
+     */
+    @Override
+    public void render() {
+        super.render();
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+        //Drawing stageManager
+        stageManager.getCurrentStage().act(getDeltaTime());
+        stageManager.getCurrentStage().draw();
+        onRender();
     }
 
+    /**
+     * Method which provide the getting of the delta time
+     *
+     * @return current delta time
+     */
     protected float getDeltaTime() {
         return Gdx.graphics.getDeltaTime();
     }
 
+    /**
+     * Method which provide the action when application is resizing
+     *
+     * @param width  current width
+     * @param height current height
+     */
     @Override
-    public abstract void dispose();
-
-    @Override
-    public abstract void render();
-
-    protected abstract void update();
-
-    @Override
-    public boolean keyDown(int keycode) {
-        return false;
+    public void resize(int width, int height) {
+        super.resize(width, height);
     }
 
+    /**
+     * Method which provide the action when game is onPause
+     */
     @Override
-    public boolean keyUp(int keycode) {
-        return false;
+    public void pause() {
+        super.pause();
     }
 
+    /**
+     * Method which provide the action when game is onResume
+     */
     @Override
-    public boolean keyTyped(char character) {
-        return false;
+    public void resume() {
+        super.resume();
     }
 
+    /**
+     * Method which provide the action when game is onDestroy
+     */
     @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
+    public void dispose() {
+        super.dispose();
     }
 
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
+    /**
+     * ABSTRACT METHODS
+     */
+    protected abstract void onCreate();
 
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
+    protected abstract void onRender();
 
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
+    protected abstract StageManager getStageManager();
 
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
-    }
 }

@@ -1,13 +1,15 @@
 package com.artlite.libgdxgame.enteties;
 
 /**
- * Created by dlernatovich on 8/14/14.
+ * Class which provide the retrieving
+ * the data about screen
+ * Created on 4/9/15.
  */
-public class ScreenConfiguration {
+public class GameDisplay {
     private int width;
     private int heigh;
 
-    public ScreenConfiguration(int width, int heigh) {
+    public GameDisplay(int width, int heigh) {
         this.width = width;
         this.heigh = heigh;
     }

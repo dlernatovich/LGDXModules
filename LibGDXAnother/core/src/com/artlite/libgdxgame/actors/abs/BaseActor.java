@@ -1,4 +1,4 @@
-package com.artlite.libgdxgame.enteties.actors;
+package com.artlite.libgdxgame.actors.abs;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
@@ -16,13 +16,9 @@ public abstract class BaseActor extends Actor implements InputProcessor {
     protected int destX = -1;
     protected int destY = -1;
 
-    protected float elapsedTime = 0;
-
     @Override
     public abstract void draw(Batch batch, float parentAlpha);
 
-    @Override
-    public abstract Actor hit(float x, float y, boolean touchable);
 
     public void setX(int x) {
         this.positionX = x;
@@ -32,10 +28,50 @@ public abstract class BaseActor extends Actor implements InputProcessor {
         this.positionY = y;
     }
 
-    public void setInputProcessor(InputProcessor inputProcessor) {
+    protected void setInputProcessor(InputProcessor inputProcessor) {
         Gdx.input.setInputProcessor(inputProcessor);
     }
 
+    @Override
+    public boolean keyDown(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyUp(int keycode) {
+        return false;
+    }
+
+    @Override
+    public boolean keyTyped(char character) {
+        return false;
+    }
+
+    public boolean touchDown(int i, int i2, int i3, int i4) {
+        return false;
+    }
+
+    public boolean touchUp(int i, int i2, int i3, int i4) {
+        return false;
+    }
+
+    public boolean touchDragged(int i, int i2, int i3) {
+        return false;
+    }
+
+    @Override
+    public boolean mouseMoved(int screenX, int screenY) {
+        return false;
+    }
+
+    @Override
+    public boolean scrolled(int amount) {
+        return false;
+    }
+
+    public boolean touchMoved(int i, int i2) {
+        return false;
+    }
 
     public int getPositionX() {
         return positionX;
@@ -67,49 +103,5 @@ public abstract class BaseActor extends Actor implements InputProcessor {
 
     public void setDestY(int destY) {
         this.destY = destY;
-    }
-
-    @Override
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
-    }
-
-    protected float getElapsedTime() {
-        return elapsedTime += Gdx.graphics.getDeltaTime();
     }
 }
